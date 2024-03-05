@@ -539,7 +539,8 @@ namespace osu.Game.Rulesets.Mania.Beatmaps
                 beatmap.HitObjects[beatmap.HitObjects.IndexOf(holdNote)] = new Note()
                 {
                     StartTime = holdNote.StartTime,
-                    Column = holdNote.Column
+                    Column = holdNote.Column,
+                    Samples = holdNote.GetNodeSamples(0)
                 };
             }
             return;
