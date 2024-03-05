@@ -332,8 +332,7 @@ namespace osu.Game.Rulesets.Mania.Beatmaps
                 foreach (var hitObject in group)
                 {
                     double jack = hitObject.StartTime - endPoint;
-
-                    if (jack < 1) jack = 1;
+                    jack = Math.Max(jack, 1);
 
                     if (jack < minJack)
                         minJack = jack;
@@ -389,7 +388,8 @@ namespace osu.Game.Rulesets.Mania.Beatmaps
                 if (group.Count() == 1) continue;
                 int newChordScale = (int)Math.Round(group.Count() / (double)beatmap.OriginalTotalColumns * TargetColumns);
 
-                if (newChordScale == 0) newChordScale = 1;
+                newChordScale = Math.Max(newChordScale, 1);
+
                 int noteToDel = group.Count() - newChordScale;
 
                 //remove some notes at the same column
